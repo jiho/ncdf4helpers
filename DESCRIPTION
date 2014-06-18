@@ -1,0 +1,15 @@
+Package: ncdf4helpers
+Title: User friendly NetCDF handling
+Description: Functions to easily extract from or write data to a NetCDF file,
+    via the package ncdf4
+Version: 0.1
+Author: Jean-Olivier Irisson
+Maintainer: Jean-Olivier Irisson <irisson@normalesup.org>
+Depends:
+    R (>= 3.0.2)
+License: GPL-3
+LazyData: true
+Imports:
+    ncdf4,
+    plyr,
+    reshape2

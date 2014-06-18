@@ -1,0 +1,60 @@
+\name{nc_write_map}
+\alias{nc_write_map}
+\title{Write a data.frame containing data on a geographical grid as a netCDF file}
+\usage{
+nc_write_map(d, file, dimensions = c("lon", "lat"), units = NULL,
+  attributes = NULL, crs = "WGS84", ...)
+}
+\arguments{
+  \item{crs}{Coordinate Reference System specification.
+  Currently only WGS84 is supported.}
+
+  \item{...}{passed to nc_write}
+
+  \item{d}{data.frame containing coordinates (along
+  dimensions) and variables}
+
+  \item{file}{output file path}
+
+  \item{dimensions}{names or indexes of columns in d
+  representing the data dimensions}
+
+  \item{units}{named vector or list containing character
+  strings which specify the units of dimensions and
+  variables. The names must be those of columns in d.
+  Defaults to no unit}
+
+  \item{attributes}{list of lists containing attributes
+  (second-level lists) for each dimension and variable
+  (first level list). The list must be named with names
+  which are dimensions or variables (i.e. columns of d).
+  Each second-level list is also a named list which stores
+  attributes as key/value pairs, where the key is the name
+  of the element of the list and the value is the content
+  of that element}
+}
+\description{
+Write a data.frame containing data on a geographical grid
+as a netCDF file
+}
+\examples{
+# load altitude data over the Mediterranean Sea
+data(med)
+file_name <- tempfile()
+nc_write_map(med, file=file_name,
+  # dimensions are lon and lat by default
+  # variables are all other columns (altitude)
+  # units of lon and lat are set automatically
+  units = c(altitude="m"),
+  # as are attributes
+  attributes = list(
+    altitude = list(long_name="Altitude relative to mean sea level", standard_name="altitude")
+  ),
+  # some global attributes are set automatically. Those will be added
+  global.attributes = list(
+    author = "Pr Foobar",
+    date_created = "2014-06-19"
+  )
+)
+}
+
