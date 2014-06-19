@@ -80,7 +80,7 @@ nc_write <- function(d, file, dimensions, variables=NULL, units=NULL, attributes
    u <- as.list(rep("", times=length(allVars)))
    names(u) <- allVars
    # include those specified as arguments
-   units <- as.list(units)
+   units <- as.list(as.character(units))
    if ( ! all(names(units) %in% names(d)) ) {
       stop("All units must relate to columns of d")
    }
