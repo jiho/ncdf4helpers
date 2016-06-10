@@ -1,7 +1,7 @@
 Package: ncdf4helpers
-Version: 0.1
 Title: Helpers to easily read from and write NetCDF files
 Description: This package wraps `ncdf4` functions and provide interfaces to easily read arrays from NetCDF files or write full data.frames as a NetCDF file.
+Version: 0.2
 Author: Jean-Olivier Irisson
 Maintainer: Jean-Olivier Irisson <irisson@normalesup.org>
 Depends:
