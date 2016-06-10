@@ -15,3 +15,4 @@ Imports:
     graphics,
     plyr,
     reshape2
+RoxygenNote: 5.0.1
