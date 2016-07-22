@@ -87,6 +87,12 @@ ncvar_slice <- function(nc, varid, ...) {
     # get the range and values of the dimensions
     r <- extract[[dim]]
     vals <- nc$dim[[dim]]$vals
+    # reduce arrays to numeric
+    if (length(dim(vals)) == 1) {
+      vals <- as.numeric(vals)
+    } else {
+      stop("Dimension ", dim, " has more than one component. ncvar_slice does not know how to deal with that. Use ncvar_get.")
+    }
     # compute the indexes inside the range
     idx <- which(vals >= r[1] & vals <= r[2])
     # extract the coordinates, start, stop and compute count
